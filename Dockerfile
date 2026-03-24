@@ -1,5 +1,5 @@
 #Stage 1 Build the application
-FROM maven:3.8.5-eclipse-temurin-21 AS build
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 #set the working directory in the container
 WORKDIR /app
 #Copy the pom.xml file to the container and download the dependencies
