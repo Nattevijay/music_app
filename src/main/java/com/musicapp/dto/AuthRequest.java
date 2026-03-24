@@ -1,0 +1,16 @@
+package com.musicapp.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@Builder
+public class AuthRequest {
+
+    private String email;
+    private String password;
+}
