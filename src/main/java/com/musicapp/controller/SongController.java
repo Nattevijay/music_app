@@ -19,11 +19,15 @@ public class SongController {
 
     private final SongService songService;
 
-    @PostMapping
-    public ResponseEntity<?> addSong(@RequestPart("request") String request,
-                                     @RequestPart("audio") MultipartFile audioFile,
-                                     @RequestPart("image") MultipartFile imageFile
+    @PostMapping(consumes = "multipart/form-data")
+    public ResponseEntity<?> addSong(@RequestPart(value = "request",  required = false) String request,
+                                     @RequestPart(value = "audio",  required = false) MultipartFile audioFile,
+                                     @RequestPart(value = "image",  required = false) MultipartFile imageFile
     ) {
+
+        System.out.println("Request: " + request);
+        System.out.println("Audio: " + (audioFile != null ? audioFile.getOriginalFilename() : "null"));
+        System.out.println("Image: " + (imageFile != null ? imageFile.getOriginalFilename() : "null"));
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             SongRequest songRequest = objectMapper.readValue(request, SongRequest.class);
